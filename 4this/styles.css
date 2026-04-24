@@ -2085,7 +2085,7 @@ main {
         padding: 0 !important;
         min-height: auto !important;
         display: block !important;
-        background-color: #e8e8e8 !important;
+        background-color: #ffffff !important; /* Blanco puro en móvil */
     }
 
     #next-move-explainer::after {
@@ -2098,14 +2098,16 @@ main {
     }
 
     #next-move-explainer .column-big-title {
-        background-color: #000000 !important;
-        padding: 60px 20px !important;
+        background-color: transparent !important; /* Quita el negro del móvil */
+        padding: 60px 20px 40px 20px !important;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100% !important;
         position: relative;
+        border-right: none !important; /* Quita la línea vertical en móvil */
+        border-bottom: 1px solid rgba(0,0,0,0.1) !important; /* Línea divisoria horizontal en móvil */
     }
 
     #next-move-explainer .next-move-photo {
@@ -2119,29 +2121,32 @@ main {
     }
 
     #next-move-explainer .column-small-text {
-        background-color: #e8e8e8 !important;
-        padding: 80px 40px 60px 40px !important;
+        background-color: transparent !important; /* Fondo transparente */
+        padding: 40px 20px 60px 20px !important;
         width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center !important; /* Vuelve a centrar todo en móvil */
         text-align: center !important;
     }
 
     #next-move-explainer .dna-text {
         font-size: 16px !important;
-        line-height: 1.4 !important;
+        line-height: 1.5 !important;
         margin-bottom: 25px !important;
-        color: #000000 !important;
+        color: #333333 !important; /* Gris oscuro para lectura */
         text-align: center !important;
         max-width: 100% !important;
     }
 
     #next-move-explainer .dna-text strong {
-        font-size: 28px !important;
+        font-size: clamp(32px, 8vw, 45px) !important;
         display: block;
         margin-bottom: 15px;
         line-height: 1.1 !important;
         text-align: center !important;
-        color: #000 !important;
-        /* Title in black as requested by reference */
+        color: var(--accent-color) !important; /* Azul corporativo */
     }
 
     /* Thinner blue strip on mobile */
