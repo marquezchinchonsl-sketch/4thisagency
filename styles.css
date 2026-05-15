@@ -194,7 +194,7 @@ ul {
     color: #063CFD;
 }
 
-.nav-social-link, 
+.nav-social-link,
 .nav-mobile-cta {
     background: #063CFD;
     color: #fff !important;
@@ -669,13 +669,15 @@ main {
     background-color: #f2f2f2;
     color: #000;
     border-bottom: none;
-    padding: 150px 0 120px 0; /* Aumentado el espacio superior y el tamaño total */
+    padding: 150px 0 120px 0;
+    /* Aumentado el espacio superior y el tamaño total */
 }
 
 .agency-who-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 280px; /* Separación mayor para empujar la imagen al extremo */
+    gap: 280px;
+    /* Separación mayor para empujar la imagen al extremo */
     align-items: flex-start;
 }
 
@@ -692,18 +694,22 @@ main {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--accent-color);
-    margin-bottom: 80px; /* Mucho más arriba, como en la referencia */
+    margin-bottom: 80px;
+    /* Mucho más arriba, como en la referencia */
 }
 
 .agency-who-title {
     font-size: clamp(32px, 4vw, 56px);
     font-weight: 800;
-    line-height: 1.25; /* Más separación solicitada */
+    line-height: 1.25;
+    /* Más separación solicitada */
     text-transform: uppercase;
     letter-spacing: -0.04em;
     margin-bottom: 40px;
-    color: var(--accent-color); /* Todo en azul */
-    margin-top: -6px; /* Ajuste óptico para que el texto encaje perfectamente con la imagen */
+    color: var(--accent-color);
+    /* Todo en azul */
+    margin-top: -6px;
+    /* Ajuste óptico para que el texto encaje perfectamente con la imagen */
 }
 
 .agency-who-image {
@@ -713,13 +719,15 @@ main {
 }
 
 .agency-chess-img {
-    width: 90%; /* Un poco más estrecha para ganar más espacio a la izquierda */
+    width: 90%;
+    /* Un poco más estrecha para ganar más espacio a la izquierda */
     height: auto;
     max-height: 480px;
     object-fit: cover;
     object-position: center top;
     display: block;
-    margin-left: auto; /* Asegura que se pegue al borde derecho */
+    margin-left: auto;
+    /* Asegura que se pegue al borde derecho */
 }
 
 .agency-who-text {
@@ -786,7 +794,8 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: flex-start; /* Alinea los bloques por arriba */
+    align-items: flex-start;
+    /* Alinea los bloques por arriba */
 }
 
 .performance-left {
@@ -1161,8 +1170,13 @@ main {
 }
 
 @keyframes slow-zoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.15); }
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
 }
 
 /* Limpieza de estilos antiguos no utilizados en este bloque */
@@ -1418,10 +1432,13 @@ main {
 }
 
 /* Responsive adjustments for the new header */
-@media (max-width: 1024px) {
-    .nav-center, .nav-right {
+@media screen and (max-width: 768px) {
+
+    .nav-center,
+    .nav-right {
         display: none;
     }
+
     .nav-hamburger {
         display: flex;
         padding: 0;
@@ -1924,7 +1941,7 @@ main {
 }
 
 /* --- MOBILE OPTIMIZATION (FINAL PERFECT ADJUSTMENTS) --- */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
     /* ---- Navbar mobile ---- */
     #main-nav {
@@ -2496,6 +2513,7 @@ main {
 .legal-page .footer-section .legal-links a {
     color: #FFFFFF !important;
 }
+
 /* =============================================
    SECCION EDITORIAL
    ============================================= */
@@ -2516,10 +2534,195 @@ main {
 }
 
 .intro-text-centered p {
-    font-size: 17px; /* Aún más pequeña como pediste */
+    font-size: 17px;
+    /* Aún más pequeña como pediste */
     line-height: 1.6;
     font-weight: 500;
     color: #333;
     max-width: 1600px;
     margin: 0 auto;
+}
+
+/* =========================
+   MOBILE PERFECT FIX
+========================= */
+@media (max-width: 768px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    /* NAVBAR */
+    #main-nav {
+        height: 75px;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+    }
+
+    .nav-center,
+    .nav-right {
+        display: none;
+    }
+
+    .nav-hamburger {
+        display: flex;
+        padding: 0;
+    }
+
+    .nav-mobile-overlay {
+        display: block;
+        top: 75px;
+    }
+
+    .logo-img {
+        height: 52px;
+    }
+
+    /* NEXT MOVE */
+    #next-move-explainer .split-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    .column-black,
+    .column-white {
+        padding: 60px 20px;
+    }
+
+    .next-move-photo {
+        max-width: 100%;
+    }
+
+    .dna-title {
+        font-size: 28px;
+        white-space: normal;
+    }
+
+    .dna-text {
+        font-size: 16px !important;
+        line-height: 1.5;
+    }
+
+    /* FRASE */
+    .phrase-content p {
+        font-size: 12px;
+        letter-spacing: 0.05em;
+    }
+
+    /* PILLARS */
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pillar-card {
+        min-height: auto;
+        padding: 40px 20px;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* QUIÉNES SOMOS */
+    .agency-who-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .agency-who-block {
+        padding: 80px 0;
+    }
+
+    .agency-who-label {
+        position: static;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .agency-who-title {
+        font-size: 36px;
+    }
+
+    .agency-chess-img {
+        width: 100%;
+    }
+
+    /* PERFORMANCE */
+    .performance-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .performance-title {
+        font-size: 36px;
+    }
+
+    .performance-text {
+        font-size: 16px;
+    }
+
+    /* SERVICES */
+    .services-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .service-top {
+        min-height: auto;
+    }
+
+    .service-item h3 {
+        font-size: 28px;
+    }
+
+    /* INTRO */
+    .intro-text-centered p {
+        font-size: 16px;
+    }
+
+    /* CONTACTO */
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-form-wrap {
+        padding: 25px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-title {
+        font-size: 34px;
+    }
+
+    /* FOOTER */
+    .footer-layout {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-right {
+        justify-content: flex-start;
+    }
+
+    .legal-links {
+        text-align: left;
+    }
+
+    /* SOCIAL */
+    .social-icons {
+        gap: 25px;
+    }
 }
