@@ -1123,7 +1123,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 200px 40px;
+    padding: 120px 40px 40px 40px;
 }
 
 .column-white {
@@ -1131,7 +1131,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 200px 80px;
+    padding: 80px 80px;
 }
 
 .dna-content {
@@ -1266,42 +1266,7 @@ main {
     text-transform: uppercase;
 }
 
-/* Scrolling Ticker (Modified to Blue) */
-.ticker-wrap {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: var(--accent-color);
-    color: #fff;
-    padding: 12px 0;
-    overflow: hidden;
-    z-index: 20;
-    white-space: nowrap;
-}
 
-.ticker-content {
-    display: flex;
-    width: fit-content;
-    animation: ticker-move 40s linear infinite;
-}
-
-.ticker-content span {
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding-right: 50px;
-}
-
-@keyframes ticker-move {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
 .column-small-text {
     flex: 0 1 500px;
@@ -1336,7 +1301,7 @@ main {
 /* Phrase Section */
 .phrase-section {
     background-color: var(--accent-color);
-    padding: 60px 0;
+    padding: 40px 0;
     text-align: center;
     border-bottom: none;
     border-top: none;
@@ -2284,14 +2249,20 @@ main {
         display: none !important;
     }
 
+    #next-move-explainer {
+        margin-bottom: -150px !important;
+        overflow: hidden !important;
+    }
+
     #next-move-explainer .split-layout {
         display: block !important;
         width: 100% !important;
     }
 
-    #next-move-explainer .column-big-title {
+    #next-move-explainer .column-black {
         background-color: #000000 !important;
-        padding: 60px 20px 40px 20px !important;
+        padding: 40px 20px 0 20px !important;
+        height: 200px !important;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -2306,35 +2277,37 @@ main {
 
     #next-move-explainer .next-move-photo {
         width: 100% !important;
-        max-width: 300px !important;
+        max-width: 200px !important;
         height: auto !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
         padding: 0 !important;
         filter: none !important;
         animation: slow-zoom 5s ease-in-out infinite alternate !important;
     }
 
-    #next-move-explainer .column-small-text {
-        background-color: transparent !important;
-        /* Fondo transparente */
-        padding: 40px 20px 60px 20px !important;
+    #next-move-explainer .column-white {
+        background-color: #ffffff !important;
+        padding: 60px 20px !important;
         width: 100% !important;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center !important;
-        /* Vuelve a centrar todo en móvil */
         text-align: center !important;
     }
 
     #next-move-explainer .dna-text {
         font-size: 16px !important;
         line-height: 1.5 !important;
-        margin-bottom: 25px !important;
+        margin-bottom: 15px !important;
         color: #333333 !important;
         /* Gris oscuro para lectura */
         text-align: center !important;
         max-width: 100% !important;
+    }
+
+    #next-move-explainer .dna-text:last-of-type {
+        margin-bottom: 0 !important;
     }
 
     #next-move-explainer .dna-text strong {
@@ -2347,10 +2320,10 @@ main {
         /* Azul corporativo */
     }
 
-    /* Thinner blue strip on mobile */
-    .ticker-wrap {
-        height: 15px !important;
-        padding: 0 !important;
+
+
+    .phrase-section {
+        display: none !important;
     }
 
     /* Intro Text Smaller on Mobile */
@@ -2595,18 +2568,40 @@ main {
         width: 52px; /* Fixed width for mobile */
     }
 
-    /* NEXT MOVE */
-    #next-move-explainer .split-layout {
-        grid-template-columns: 1fr !important;
+    #next-move-explainer {
+        margin-bottom: 0 !important;
+        overflow: visible !important;
     }
 
-    .column-black,
-    .column-white {
-        padding: 60px 20px;
+    #next-move-explainer .split-layout {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #next-move-explainer .column-black {
+        background-color: #000000 !important;
+        padding: 100px 20px 20px 20px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #next-move-explainer .column-white {
+        background-color: #ffffff !important;
+        padding: 60px 20px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center !important;
+        text-align: center !important;
     }
 
     .next-move-photo {
-        max-width: 100%;
+        width: 100% !important;
+        max-width: 200px !important;
+        height: auto !important;
+        margin: 0 auto !important;
     }
 
     .dna-title {
@@ -2620,6 +2615,11 @@ main {
     }
 
     /* FRASE */
+    .phrase-section {
+        background-color: var(--accent-color);
+        padding: 30px 0 !important;
+        display: block !important;
+    }
     .phrase-content p {
         font-size: 12px;
         letter-spacing: 0.05em;
