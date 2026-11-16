@@ -137,6 +137,125 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    if (!reducedMotion) {
+        document.querySelectorAll('.phrase p, .quote').forEach((el) => {
+            let index = 0;
+            const splitNode = (node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const parts = node.textContent.split(/(\s+)/);
+                    if (!parts.some((part) => part.trim())) return;
+                    const fragment = document.createDocumentFragment();
+                    parts.forEach((part) => {
+                        if (!part) return;
+                        if (!part.trim()) {
+                            fragment.appendChild(document.createTextNode(part));
+                            return;
+                        }
+                        const word = document.createElement('span');
+                        word.className = 'word';
+                        word.style.setProperty('--i', String(index));
+                        index += 1;
+                        word.textContent = part;
+                        fragment.appendChild(word);
+                    });
+                    node.parentNode.replaceChild(fragment, node);
+                    return;
+                }
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    [...node.childNodes].forEach(splitNode);
+                }
+            };
+            [...el.childNodes].forEach(splitNode);
+            el.classList.add('split');
+        });
+
+        const finePointer = window.matchMedia('(pointer: fine)').matches;
+        if (finePointer) {
+            document.querySelectorAll('.plan, .pillar').forEach((card) => {
+                card.addEventListener('pointermove', (event) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const y = event.clientY - rect.top;
+                    card.style.setProperty('--mx', `${x}px`);
+                    card.style.setProperty('--my', `${y}px`);
+                    const rotateX = ((y / rect.height) - 0.5) * -8;
+                    const rotateY = ((x / rect.width) - 0.5) * 9;
+                    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                });
+                card.addEventListener('pointerleave', () => {
+                    card.style.transform = '';
+                });
+            });
+
+            document.querySelectorAll('.btn').forEach((button) => {
+                button.addEventListener('pointermove', (event) => {
+                    const rect = button.getBoundingClientRect();
+                    const x = event.clientX - (rect.left + rect.width / 2);
+                    const y = event.clientY - (rect.top + rect.height / 2);
+                    button.style.transform = `translate(${x * 0.2}px, ${y * 0.28}px)`;
+                });
+                button.addEventListener('pointerleave', () => {
+                    button.style.transform = '';
+                });
+            });
+        }
+
+        const heroEl = document.querySelector('.hero');
+        const phraseEl = document.querySelector('.phrase');
+        const performanceEl = document.querySelector('.performance');
+        const track = document.querySelector('.marquee-track');
+        let lastY = window.scrollY;
+        let rate = 1;
+        let frame = 0;
+
+        const paint = () => {
+            frame = 0;
+            const y = window.scrollY;
+            const delta = y - lastY;
+            lastY = y;
+
+            if (heroEl) {
+                const rect = heroEl.getBoundingClientRect();
+                const progress = Math.min(1, Math.max(0, -rect.top / Math.max(rect.height, 1)));
+                const damp = window.innerWidth < 800 ? 0.45 : 1;
+                heroEl.style.setProperty('--p', (progress * damp).toFixed(4));
+            }
+
+            if (phraseEl) {
+                const rect = phraseEl.getBoundingClientRect();
+                const passed = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                const center = 1 - Math.min(1, Math.abs(Math.min(1, Math.max(0, passed)) - 0.5) * 2);
+                phraseEl.style.setProperty('--p', center.toFixed(4));
+            }
+
+            if (track && typeof track.getAnimations === 'function') {
+                const target = 1 + Math.min(1.8, Math.abs(delta) / 14);
+                rate += (target - rate) * 0.18;
+                const running = track.getAnimations()[0];
+                if (running) running.playbackRate = rate;
+            }
+        };
+
+        const requestPaint = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(paint);
+        };
+
+        paint();
+        window.addEventListener('scroll', requestPaint, { passive: true });
+
+        if (performanceEl && 'IntersectionObserver' in window) {
+            const band = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-in');
+                    band.unobserve(entry.target);
+                });
+            }, { threshold: 0.35 });
+            band.observe(performanceEl);
+        }
+    }
+
     const revealNodes = document.querySelectorAll('.reveal');
     if (reducedMotion || !('IntersectionObserver' in window)) {
         revealNodes.forEach((node) => node.classList.add('is-in'));
